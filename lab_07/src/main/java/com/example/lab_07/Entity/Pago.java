@@ -27,7 +27,7 @@ public class Pago {
     private String tipoPago;
 
     @Column(name = "fecha")
-    private LocalDateTime fecha;
+    private String fecha;
 
     @ManyToOne
     @JoinColumn(name = "creditos_id")

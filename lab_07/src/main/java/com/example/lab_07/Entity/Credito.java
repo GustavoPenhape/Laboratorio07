@@ -23,7 +23,7 @@ public class Credito {
     private User usuario;
 
     @Column(name = "fecha")
-    private LocalDateTime fecha;
+    private String fecha;
 
     @Column(name = "interes")
     private Double interes;

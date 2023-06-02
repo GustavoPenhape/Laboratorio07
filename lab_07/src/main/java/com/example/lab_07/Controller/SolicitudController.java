@@ -68,31 +68,21 @@ public class SolicitudController {
     @PutMapping(value = "/denegarSolicitud")
     public ResponseEntity<HashMap<String, Object>> denegarSolicitud(
             @RequestParam(value = "idSolicitud") Integer idSolicitud) {
-        // Busca la solicitud por su ID
         Optional<Solicitud> optionalSolicitud = solicitudRepository.findById(idSolicitud);
         if (optionalSolicitud.isPresent()) {
             Solicitud solicitud = optionalSolicitud.get();
-
-            // Verifica si la solicitud está en estado "pendiente"
             if (solicitud.getSolicitud_estado().equals("pendiente")) {
-                // Cambia el estado de la solicitud a "denegada"
                 solicitud.setSolicitud_estado("denegada");
-
-                // Guarda la solicitud actualizada
                 solicitudRepository.save(solicitud);
-
-                // Prepara la respuesta
                 HashMap<String, Object> responseMap = new HashMap<>();
                 responseMap.put("id solicitud", solicitud.getId());
                 return ResponseEntity.ok(responseMap);
             } else {
-                // Si la solicitud no está en estado "pendiente", devuelve la respuesta correspondiente
                 HashMap<String, Object> responseMap = new HashMap<>();
                 responseMap.put("solicitud ya atendida", solicitud.getId());
                 return ResponseEntity.ok(responseMap);
             }
         } else {
-            // Si no se encuentra la solicitud, devuelve una respuesta de error
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }

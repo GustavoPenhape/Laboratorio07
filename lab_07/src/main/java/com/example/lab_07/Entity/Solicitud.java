@@ -23,7 +23,7 @@ public class Solicitud {
     private Double solicitud_monto;
 
     @Column(name = "solicitud_fecha")
-    private LocalDate solicitud_fecha;
+    private String solicitud_fecha;
 
     @ManyToOne
     @JoinColumn(name = "usuarios_id")

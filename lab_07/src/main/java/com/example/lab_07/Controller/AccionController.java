@@ -23,10 +23,7 @@ public class AccionController {
     @PostMapping(value = "/save")
     public ResponseEntity<HashMap<String, Object>> guardarAccion(
             @RequestBody Accion nuevaAccion) {
-        // Guarda la nueva acción
         Accion accionGuardada = accionRepository.save(nuevaAccion);
-
-        // Prepara la respuesta
         HashMap<String, Object> responseMap = new HashMap<>();
         responseMap.put("idCreado", accionGuardada.getId());
         return ResponseEntity.status(HttpStatus.CREATED).body(responseMap);

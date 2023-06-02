@@ -26,10 +26,7 @@ public class PagoController {
     @PostMapping(value = "/registrarPago")
     public ResponseEntity<HashMap<String, Object>> registrarPago(
             @RequestBody Pago nuevoPago) {
-        // Guarda el nuevo pago
         Pago pagoGuardado = pagoRepository.save(nuevoPago);
-
-        // Prepara la respuesta
         HashMap<String, Object> responseMap = new HashMap<>();
         responseMap.put("id", pagoGuardado.getId());
         return ResponseEntity.status(HttpStatus.CREATED).body(responseMap);
