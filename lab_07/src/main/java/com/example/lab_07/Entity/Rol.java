@@ -1,0 +1,18 @@
+package com.example.lab_07.Entity;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Table(name="rol")
+@Getter
+@Setter
+public class Rol {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id", nullable = false)
+    private Integer id;
+
+    @Column(name="nombre_rol")
+    private String nombre_rol;
+}
